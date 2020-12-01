@@ -45,7 +45,7 @@ int cnt;
 ##########################*/
 static int getInput(char *f) {
 	char * line = NULL;
-	size_t l = 0;
+	size_t l;
 	arr = NULL;
 	cnt = 0;
    
@@ -60,12 +60,22 @@ static int getInput(char *f) {
 		arr[cnt-1] = toI(line);
 	}
 
-
 	free(line);
 	fclose(file);
 	return 1;
 }
 
+int solve(int n) {
+	for(int i = 0; i < cnt; i++) 
+		for(int k = i+1; k < cnt; k++) {
+			if((arr[i] + arr[k]) == 2020 && !n)
+				return arr[i] * arr[k];
+			else if (n)
+				for(int m = k+1; m < cnt; m++) 
+					if((arr[i] + arr[k] + arr[m]) == 2020)
+						return arr[i] * arr[k] * arr[m];
+		}
+}
 
 /*##########################
 # Function to solve part A #
@@ -73,15 +83,9 @@ static int getInput(char *f) {
 void get1a(char * f) {
 	if(!getInput(f))
 		return;
-	int res;
-	for(int i = 0; i < cnt; i++) {
-		for(int k = i+1; k < cnt; k++) {
-			if((arr[i] + arr[k]) == 2020)
-				res = arr[i] * arr[k];
-		}
-	}
+
+	printf("1a: %d\n", solve(0));
 	free(arr);
-	printf("1a: %d\n", res);
 }
 
 
@@ -91,15 +95,7 @@ void get1a(char * f) {
 void get1b(char *f) {
 	if(!getInput(f))
 		return;
-	int res;
-	for(int i = 0; i < cnt; i++) {
-		for(int k = i+1; k < cnt; k++) {
-			for(int m = k+1; m < cnt; m++) {
-				if((arr[i] + arr[k] + arr[m]) == 2020)
-					res = arr[i] * arr[k] * arr[m];
-			}
-		}
-	}
+
+	printf("1b: %d\n\n", solve(1));
 	free(arr);
-	printf("1b: %d\n\n", res);
 }
