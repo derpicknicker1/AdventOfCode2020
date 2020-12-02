@@ -10,7 +10,7 @@ The `*.txt` files in `input/` contain the original input for the tasks.
 
 Use GCC to build `main.c` with the makefile provided.
 
-## Building in SublimeText3 
+## Building in SublimeText3 (Win)
 
 * Install Mingw
 * Add `C:\MinGW\bin` to PATH
