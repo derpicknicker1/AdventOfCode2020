@@ -20,7 +20,7 @@ Use GCC to build `main.c` with the makefile provided.
     ```yaml
     {
       "shell_cmd": "make",
-      "working_dir": "$folder",
+      "working_dir": "${folder}",
      
       "variants": 
       [
