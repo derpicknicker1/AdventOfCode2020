@@ -5,11 +5,15 @@
 #include <math.h>
 #include <time.h>
 #include <limits.h>
+#include <ctype.h>
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 
 // Helper
 int toI(char *s);
+char *ltrim(char *s);
+char *rtrim(char *s);
+char *trim(char *s);
 
 // Day 0 EXAMPLE
 void get0a(char *f);
