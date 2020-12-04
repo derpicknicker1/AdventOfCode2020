@@ -14,6 +14,8 @@ int toI(char *s);
 char *ltrim(char *s);
 char *rtrim(char *s);
 char *trim(char *s);
+int isDigit(char c);
+int isHexDigit(char c);
 
 // Day 0 EXAMPLE
 void get0a(char *f);

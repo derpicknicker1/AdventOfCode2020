@@ -31,3 +31,15 @@ char *trim(char *s)
 {
     return rtrim(ltrim(s)); 
 }
+
+int isDigit(char c) {
+	if(c >= 48 && c <= 57)
+		return 1;
+	return 0;
+}
+
+int isHexDigit(char c) {
+	if( isDigit(c) || (c >= 97 && c <= 102))
+		return 1;
+	return 0;
+}
