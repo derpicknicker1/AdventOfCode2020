@@ -71,11 +71,11 @@ Your puzzle answer was 2421944712.
 */
 #include "advent.h"
 
-char **arr;
-int cntL;
-int lenL;
+static char **arr;
+static int cntL;
+static int lenL;
 
-void freeArr() {
+static void freeArr() {
 	for(int i = 0; i < cntL; i++)
 		free(arr[i]);
 	free(arr);

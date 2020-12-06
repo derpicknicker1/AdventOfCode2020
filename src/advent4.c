@@ -125,10 +125,10 @@ typedef struct {
 	char hgt[20];
 } Pass;
 
-Pass *arr;
-int cnt;
+static Pass *arr;
+static int cnt;
 
-void newArrEntry(){
+static void newArrEntry(){
 	arr = realloc(arr, ++cnt * sizeof(Pass));
 	strcpy(arr[cnt-1].eyr , "");
 	strcpy(arr[cnt-1].byr , "");

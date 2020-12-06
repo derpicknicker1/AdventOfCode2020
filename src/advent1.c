@@ -37,8 +37,8 @@ Your puzzle answer was 293450526.
 */
 #include "advent.h"
 
-int *arr;
-int cnt;
+static int *arr;
+static int cnt;
 
 /*##########################
 # Get input data from file #

@@ -46,8 +46,8 @@ typedef struct{
 	char p[100];
 } Pass;
 
-Pass *a;
-int c;
+static Pass *a;
+static int c;
 
 
 /*##########################
