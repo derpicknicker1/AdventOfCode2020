@@ -52,7 +52,33 @@ Your puzzle answer was 696.
 */
 #include "advent.h"
 
-static unsigned char rows[128];
+static char **arr;
+static int cnt;
+
+static void freeArr() {
+	for(int i = 0; i < cnt; i++) {
+		free(arr[i]);
+	}
+	free(arr);
+}
+
+static void calcPlace(int *row, int *seat, char *c){
+	int f = 0;
+	int b = 127;
+	int l = 0;
+	int r = 7;
+	for(int k = 0; k < 10; k++) 
+		if(c[k] == 'F')
+			b -= (b - f) / 2 + 1;
+		else if(c[k] == 'B')
+			f += (b - f)/ 2 + 1;
+		else if(c[k] == 'L')
+			r -= (r - l) / 2 + 1;
+		else
+			l += (r - l) / 2 + 1;
+	*row = f;
+	*seat = l;
+}
 
 /*##########################
 # Get input data from file #
@@ -60,9 +86,8 @@ static unsigned char rows[128];
 static int getInput(char *f) {
 	char * line = NULL;
 	size_t l;
-
-	for(int i = 0; i < 128; i++)
-		rows[i] = 0;
+	arr = NULL;
+	cnt = 0;
    
 	FILE *file = fopen(f, "r");
 	if(file == NULL) {
@@ -71,12 +96,9 @@ static int getInput(char *f) {
 	}
 
 	while( getline(&line, &l, file) != -1) {
-		int row = 0, seat = 0;
-		for(int i = 0; i < 7; i++)
-			row |= (line[i]=='F'?0:1 << 6-i);
-		for(int i = 7; i < 10; i++)
-			seat |= (line[i]=='L'?0:1 << 9-i);
-		rows[row] += (1 << seat);
+		arr = realloc(arr, ++cnt * sizeof(char*));
+		arr[cnt - 1] = malloc(strlen(line) + 1);
+		strcpy(arr[cnt - 1],line);
 	}
 
 	free(line);
@@ -87,31 +109,44 @@ static int getInput(char *f) {
 /*##########################
 # Function to solve part A #
 ##########################*/
-void get5a(char * f) {
+void get5aOld(char * f) {
 	if(!getInput(f))
 		return;
 
 	int result = 0;
 
-	for(int i = 0, k = 0; i < 128; (k < 7) ? k++ : (i++, k=0))
-			if(0x01 & (rows[i] >> k) && (i * 8 + k) > result)
-				result = i * 8 + k;
+	for( int i = 0; i < cnt; i++) {
+		int row, seat;
+		calcPlace(&row, &seat, arr[i]);
+		if( (row * 8 + seat) > result)
+			result = row * 8 + seat;
+	}
 	
 	printf("5a: %d\n", result);
+	freeArr();
 }
 
 
 /*##########################
 # Function to solve part B #
 ##########################*/
-void get5b(char *f) {
+void get5bOld(char *f) {
 	if(!getInput(f))
 		return;
-	
-	for(int i = 1, k = 0; i < 127;  k < 7 ? k++ : (i++, k=0))
-			if(!(0x01 & rows[i] >> k) && 
-				 0x01 & rows[k==0?i-1:i] >> (k==0?7:k-1) && 
-				 0x01 & rows[k==7?i+1:i] >> (k==7?0:k+1)
-			  )
-				printf("5b: %d\n\n", i * 8 + k);	
+
+	int result = 0;
+	unsigned char seats[128] = {};
+
+	for( int i = 0; i < cnt; i++) {
+		int row, seat;
+		calcPlace(&row, &seat, arr[i]);
+		seats[row] |= (1 << seat);
+	}
+
+	for(int i = 1; i < 127; i++)
+		if(seats[i] != 255 && seats[i+1] == 255 && seats[i-1] == 255)
+			result = i * 8 + log10(255-seats[i])/log10(2);
+
+	printf("5b: %d\n\n", result);
+	freeArr();
 }
