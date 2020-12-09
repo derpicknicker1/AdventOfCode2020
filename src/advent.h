@@ -8,6 +8,9 @@
 #include <ctype.h>
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) > (y)) ? (y) : (x))
+#define true 1
+#define false 0
 
 // Helper
 int toI(char *s);
