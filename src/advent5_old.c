@@ -51,6 +51,7 @@ What is the ID of your seat?
 Your puzzle answer was 696.
 */
 #include "advent.h"
+#include <math.h>
 
 static char **arr;
 static int cnt;
