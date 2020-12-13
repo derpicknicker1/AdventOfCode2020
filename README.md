@@ -10,6 +10,7 @@ The `*.txt` files in `input/` contain the original input for the tasks.
 
 Use GCC to build `main.c` with the makefile provided.
 
+![C/C++ CI](https://github.com/derpicknicker1/AdventOfCode2020/workflows/C/C++%20CI/badge.svg)
 ## Building in SublimeText3 (Win)
 
 * Install Mingw
