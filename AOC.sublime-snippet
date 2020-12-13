@@ -39,9 +39,9 @@ void get$1a(char * f) {
 	if(!getInput(f))
 		return;
 	
-	int return = 0;
+	int result = 0;
 	
-	printf("$1a: %d\n", abs(x)+abs(y));
+	printf("$1a: %d\n", result);
 	free(arr);
 }
 
@@ -52,9 +52,9 @@ void get$1b(char *f) {
 	if(!getInput(f))
 		return;
 
-	int return = 0;
+	int result = 0;
 
-	printf("$1b: %ld\n\n", abs(x)+abs(y));
+	printf("$1b: %d\n\n", result);
 	free(arr);
 }
 

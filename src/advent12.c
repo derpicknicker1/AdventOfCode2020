@@ -158,7 +158,7 @@ void get12b(char *f) {
 				break;
 		}
 
-	printf("12b: %ld\n\n", abs(x) + abs(y));
+	printf("12b: %d\n\n", abs(x) + abs(y));
 	free(arr);
 }
 
