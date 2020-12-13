@@ -16,4 +16,4 @@ jobs:
     - name: make
       run: make
     - name: main
-      run: ./main
+      run: ./main skip
