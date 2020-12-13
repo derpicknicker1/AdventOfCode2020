@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -21,6 +21,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@2
+    - uses: actions/checkout@v2
     - name: main
       run: ./main.exe skip
