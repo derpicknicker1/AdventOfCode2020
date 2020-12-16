@@ -9,6 +9,7 @@
 
 #define MAX(x, y) (((x) > (y)) ? (x) : (y))
 #define MIN(x, y) (((x) > (y)) ? (y) : (x))
+#define INRANGE(x, y, z) ((x) >= (y) && (x) <= (z))
 #define true 1
 #define false 0
 
