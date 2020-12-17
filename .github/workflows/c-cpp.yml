@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  build_linux_sp:
 
     runs-on: ubuntu-latest
 
@@ -16,7 +16,34 @@ jobs:
     - name: make
       run: make FOO=-fno-stack-protector
 
-  run:
+  build_run_linux_sp:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make FOO=-fno-stack-protector
+
+  build_linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+
+  build_run_linux:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: make
+      run: make
+
+  run_win:
 
     runs-on: windows-latest
 
