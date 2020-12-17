@@ -25,7 +25,7 @@ jobs:
     - name: make
       run: make FOO=-fno-stack-protector
     - name: run
-      run: main skip
+      run: ./main skip
 
   build_linux:
 
@@ -45,7 +45,7 @@ jobs:
     - name: make
       run: make
     - name: run
-      run: main skip
+      run: ./main skip
 
   run_win:
 
