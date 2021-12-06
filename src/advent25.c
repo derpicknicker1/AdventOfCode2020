@@ -25,7 +25,7 @@ static bool getInput(char *f) {
 /*##########################
 # Function to solve part A #
 ##########################*/
-void get7a(char * f) {
+void get25a(char * f) {
 	if (!getInput(f)) return;
 	
 	long long result = 1,loop =0;
@@ -37,13 +37,13 @@ void get7a(char * f) {
 	for (int i = 0; i < loop; i++)
 		result = (result * key[1]) % 20201227;
 	
-	printf("7a: %ld\n", result);
+	printf("7a: %lld\n", result);
 }
 
 /*##########################
 # Function to solve part B #
 ##########################*/
-void get7b(char *f) {
+void get25b(char *f) {
 	//if (!getInput(f)) return;
 
 	int result = 0;
