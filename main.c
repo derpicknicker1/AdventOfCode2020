@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
 	begin = clock();
 
 	//execute(0) // EXAMPLE
-	execute(1)
+	/*execute(1)
 	execute(2)
 	execute(3)
 	execute(4)
@@ -40,15 +40,15 @@ int main(int argc, char* argv[]) {
 	execute(15)
 	execute(16)
 	execute(17)
-/*	execute(18)
+	execute(18)
 	execute(19)
 	execute(20)
 	execute(21)
-	execute(22)
+	execute(22)*/
 	execute(23)
-	execute(24)
+/*	execute(24)*/
 	execute(25)
-	*/
+	
 	double timeSpent = (double)(clock() - beginAll) / CLOCKS_PER_SEC;
 	printf("Overall Runtime: %.3f\n_______________________________\n", timeSpent);
 	if(argc < 2 || strcmp(argv[1],"skip") != 0)
